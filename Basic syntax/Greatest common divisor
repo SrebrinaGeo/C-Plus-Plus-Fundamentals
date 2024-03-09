@@ -1,0 +1,28 @@
+#include <iostream>
+#include<cmath>
+#include<climits>
+#include<math.h>
+using namespace std;
+
+int main()
+{
+    int a, b;
+    cin >> a >> b;
+    
+    while (a != b)
+    {
+        if (a > b)
+        {
+            a -= b;
+        }
+        else
+        {
+            b -= a;
+        }
+    }
+
+    int gcd = a;
+    cout << gcd << endl;
+
+    return 0;
+}
