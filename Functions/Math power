@@ -1,0 +1,22 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+
+int power(int x, int y)
+{
+    int result = pow(x, y);
+
+    return result;
+}
+
+
+int main()
+{
+    int num1, num2;
+    cin >> num1 >> num2;
+
+    cout << power(num1, num2);
+
+    return 0;
+}
