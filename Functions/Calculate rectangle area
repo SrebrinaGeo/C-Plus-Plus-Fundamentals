@@ -1,0 +1,20 @@
+#include <iostream>
+#include <climits>
+using namespace std;
+
+
+int area(int a, int b)
+{
+    return a * b;
+}
+
+
+int main()
+{
+    int width, height;
+    cin >> width >> height;
+
+    cout << area(width, height) << endl;
+
+    return 0;
+}
