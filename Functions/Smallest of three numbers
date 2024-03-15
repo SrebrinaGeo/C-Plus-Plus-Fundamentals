@@ -1,0 +1,34 @@
+#include <iostream>
+#include <climits>
+using namespace std;
+
+
+int smallestNum(int a, int b, int c)
+{
+    int smallest = INT_MAX;
+    if (a < smallest)
+    {
+        smallest = a;
+    }
+    if (b < smallest)
+    {
+        smallest = b;
+    }
+    if (c < smallest)
+    {
+        smallest = c;
+    }
+
+    return smallest;
+}
+
+
+int main()
+{
+    int a, b, c;
+    cin >> a >> b >> c;
+
+    cout << smallestNum(a, b, c) << endl;
+
+    return 0;
+}
