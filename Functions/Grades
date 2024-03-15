@@ -1,0 +1,37 @@
+#include <iostream>
+using namespace std;
+
+
+void grades(double grade)
+{
+    if (grade < 3)
+    {
+        cout << "Fail" << endl;
+    }
+    else if (grade < 3.5)
+    {
+        cout << "Poor" << endl;
+    }
+    else if (grade < 4.5)
+    {
+        cout << "Good" << endl;
+    }
+    else if (grade < 5.5)
+    {
+        cout << "Very good" << endl;
+    }
+    else if (grade < 6.0)
+    {
+        cout << "Excellent" << endl;
+    }
+}
+
+int main()
+{
+    double grade;
+    cin >> grade;
+
+    grades(grade);
+
+    return 0;
+}
