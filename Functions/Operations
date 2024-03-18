@@ -1,0 +1,53 @@
+#include <iostream>
+#include <math.h>
+using namespace std;
+
+
+int add(int a, int b)
+{
+    return a + b;
+}
+
+int subtract(int a, int b)
+{
+    return a - b;
+}
+
+int multiply(int a, int b)
+{
+    return a * b;
+}
+
+int divide(int a, int b)
+{
+    return a / b;
+}
+
+int main()
+{
+    int a, b;
+    char operation;
+    cin >> a >> b >> operation;
+    int result = 0;
+
+    if (operation == '+')
+    {
+        result = add(a, b);
+    }
+    else if(operation == '-')
+    {
+        result = subtract(a, b);
+    }
+    else if (operation == '*')
+    {
+        result = multiply(a, b);
+    }
+    else if (operation == '/')
+    {
+        result = divide(a, b);
+    }
+
+    cout << result << endl;
+
+    return 0;
+}
