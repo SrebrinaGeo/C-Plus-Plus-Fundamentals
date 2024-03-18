@@ -1,0 +1,34 @@
+#include <iostream>
+#include <math.h>
+using namespace std;
+
+double calculateDistance(double x, double y)
+{
+    return sqrt(x * x + y * y);
+}
+
+void printPoint(double x, double y)
+{
+    cout << '(' << x << ", " << y << ')' << endl;
+}
+
+
+int main()
+{
+    double x1, y1, x2, y2;
+    cin >> x1 >> y1 >> x2 >> y2;
+
+    double distance1 = calculateDistance(x1, y1);
+    double distance2 = calculateDistance(x2, y2);
+
+    if (distance1 <= distance2)
+    {
+        printPoint(x1, y1);
+    }
+
+    else
+    {
+        printPoint(x2, y2);
+    }
+    return 0;
+}
