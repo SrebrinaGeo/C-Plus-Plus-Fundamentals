@@ -1,0 +1,44 @@
+#include <iostream>
+using namespace std;
+
+void printArrays(const int array[], const int& n)
+{
+    for (int i = 1; i <= n; i++)
+    {
+        cout << array[i] << " ";
+    }
+    cout << endl;
+}
+
+int main()
+{
+    int n;
+    cin >> n;
+
+    constexpr int MAX_N = 99;
+
+    int array1[MAX_N], array2[MAX_N];
+
+    for (int i = 1; i <= n; i++)
+    {
+        int firstNum, secondNum;
+        cin >> firstNum >> secondNum;
+
+        if (i % 2 != 0)
+        {
+            array1[i] = firstNum;
+            array2[i] = secondNum;
+        }
+        else
+        {
+            array1[i] = secondNum;
+            array2[i] = firstNum;
+        } 
+    }
+
+
+    printArrays(array1, n);
+    printArrays(array2, n);
+
+    return 0;
+}
