@@ -1,0 +1,50 @@
+#include <iostream>
+using namespace std;
+
+void readArray(int array[], const int& n)
+{
+    for (int i = 0; i < n; i++)
+    {
+        cin >> array[i];
+    }
+}
+
+
+int main()
+{
+    constexpr int MAX_N = 100;
+    int array[MAX_N];
+
+    int n;
+    cin >> n;
+
+    readArray(array, n);
+
+    int index = 0;
+    int maxCount = 0, maxSeqStart = -1;
+    while (index < n)
+    {
+        int start = index;
+
+        while (index + 1 < n && array[index] == array[index + 1])
+        {
+            index++;
+        }
+
+        int count = index - start + 1;
+        if (count >= maxCount)
+        {
+            maxCount = count;
+            maxSeqStart = start;
+        }
+        index++;
+    }
+
+    for (int i = 0; i < maxCount; i++)
+    {
+        cout << array[maxSeqStart + i] << " ";
+    }
+    cout << endl;
+
+    return 0;
+}
