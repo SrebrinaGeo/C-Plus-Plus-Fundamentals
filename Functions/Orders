@@ -1,0 +1,44 @@
+#include <iostream>
+#include<iomanip>
+using namespace std;
+
+double price(string product, double quantity)
+{
+    double result = 0.0;
+
+    if (product == "coffee")
+    {
+        result += 1.5 * quantity;
+    }
+    else if (product == "water")
+    {
+        result += 1.0 * quantity;
+    }
+    else if (product == "coke")
+    {
+        result += 1.4 * quantity;
+    }
+    else if (product == "snacks")
+    {
+        result += 2.0 * quantity;
+    }
+    return result;
+}
+
+
+int main()
+{
+    string product;
+    cin >> product;
+    double quantity;
+    cin >> quantity;
+
+
+    double totalPrice = price(product, quantity);
+
+    cout.setf(ios::fixed);
+    cout.precision(2);
+    cout << totalPrice << endl;
+  
+  	return 0;
+}
