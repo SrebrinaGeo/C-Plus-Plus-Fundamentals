@@ -1,0 +1,46 @@
+#include <iostream>
+#include<limits.h>
+using namespace std;
+
+void readArray(int array[], const int& n)
+{
+    for (int i = 0; i < n; i++)
+    {
+        cin >> array[i];
+    }
+}
+
+int main()
+{
+    constexpr int MAX_N = 100, RANGE = 10;
+    int array[MAX_N], counters[RANGE]{};
+
+    int n;
+    cin >> n;
+
+    readArray(array, n);
+    int minDiff = INT_MAX;
+
+    if (n < 2)
+    {
+        minDiff = 0;
+    }
+
+    else
+    {
+        for (int i = 0; i < n - 1; i++)
+        {
+            for (int j = i + 1; j < n; j++)
+            {
+                int currentDiff = abs(array[i] - array[j]);
+                if (currentDiff < minDiff)
+                {
+                    minDiff = currentDiff;
+                }
+            }
+        }
+    }
+    cout << minDiff;
+
+    return 0;
+}
