@@ -1,0 +1,47 @@
+#include <iostream>
+#include<limits.h>
+using namespace std;
+
+void rotateArray(int arr[], const int& n)
+{
+    int first = arr[0];
+    for (int i = 1; i < n; i++) arr[i - 1] = arr[i];
+
+    arr[n - 1] = first;
+}
+
+void readArray(int array[], const int& n)
+{
+    for (int i = 0; i < n; i++)
+    {
+        cin >> array[i];
+    }
+}
+
+int main()
+{
+    constexpr int MAX_N = 100, RANGE = 10;
+    int array[MAX_N], counters[RANGE]{};
+
+    int n;
+    cin >> n;
+
+    readArray(array, n);
+    
+
+    int rotations;
+    cin >> rotations;
+
+    rotations %= n;
+
+    for (int i = 0; i < rotations; i++) rotateArray(array, n);
+
+    for (int i = 0; i < n; i++)
+    {
+        cout << array[i] << " ";
+    }
+
+    cout << endl;
+
+    return 0;
+}
