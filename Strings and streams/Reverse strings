@@ -1,0 +1,30 @@
+#include <iostream>
+#include<string>
+using namespace std;
+
+
+void printReversed(const string& text)
+{
+    size_t lastIndex = text.length() - 1;
+
+    cout << text << " = ";
+
+    for (int i = lastIndex; i >= 0; i--)
+    {
+        cout << text[i];
+    }
+
+    cout << endl;
+}
+
+int main() 
+{
+    string text;
+
+    while (cin >> text)
+    {
+        if (text == "end") break;
+        printReversed(text);
+    }
+    return 0;
+}
