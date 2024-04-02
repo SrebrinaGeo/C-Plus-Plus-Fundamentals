@@ -1,0 +1,25 @@
+#include <iostream>
+#include <string>
+#include<sstream>
+using namespace std;
+
+
+int main()
+{
+    ostringstream result;
+    string text;
+
+    while (cin >> text)
+    {
+        int count = text.length();
+
+        while (count--)
+        {
+            result << text;
+        }
+    }
+
+    cout << result.str();
+
+    return 0;
+}
