@@ -1,0 +1,30 @@
+#include <iostream>
+#include<string>
+#include<cctype>
+using namespace std;
+
+
+int main()
+{
+    string input;
+    getline(cin, input);
+
+    string numbers;
+    string letters;
+    string other;
+
+    for (char symbol : input)
+    {
+        if (isdigit(symbol)) numbers += symbol;
+
+        else if (isalpha(symbol)) letters += symbol;
+
+        else other += symbol;
+    }
+
+    cout << numbers << endl;
+    cout << letters << endl;
+    cout << other << endl;
+
+    return 0;
+}
