@@ -1,0 +1,26 @@
+#include <iostream>
+#include<string>
+using namespace std;
+
+
+int main()
+{
+    string toRemove;
+    string text;
+
+    getline(cin, toRemove);
+    getline(cin, text);
+
+    while (true)
+    {
+        int position = text.find(toRemove);
+
+        if (position == string::npos) break;
+
+        text.erase(position, toRemove.size());
+    }
+
+    cout << text << endl;
+
+    return 0;
+}
