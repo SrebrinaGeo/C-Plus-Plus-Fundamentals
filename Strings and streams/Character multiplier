@@ -1,0 +1,26 @@
+#include <iostream>
+#include<string>
+using namespace std;
+
+
+int main()
+{
+    string first, second;
+    cin >> first >> second;
+
+    int sum = 0, cursor = 0;
+
+    while (cursor < first.length() || cursor < second.length())
+    {
+        int multiplier1 = 1, multiplier2 = 1;
+        if (cursor < first.length()) multiplier1 = first[cursor];
+        if (cursor < second.length()) multiplier2 = second[cursor];
+
+        sum += multiplier1 * multiplier2;
+        cursor++;
+    }
+
+    cout << sum << endl;
+
+    return 0;
+}
