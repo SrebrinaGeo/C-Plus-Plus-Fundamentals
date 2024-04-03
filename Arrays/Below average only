@@ -1,0 +1,59 @@
+#include <iostream>
+using namespace std;
+
+void readArray(int array[], const int& n)
+{
+    for (int i = 0; i < n; i++)
+    {
+        cin >> array[i];
+    }
+}
+
+int main()
+{
+    constexpr int MAX_N = 100;
+
+    int n;
+    cin >> n;
+
+    int sum = 0;
+    int product = 1;
+    int array[MAX_N];
+
+    readArray(array, n);
+
+    for (int i = 0; i < n; i++)
+    {
+        sum += array[i];
+    }
+
+    int newArray[MAX_N];
+    int newIndex = 0;
+    int average = sum / n;
+    for (int i = 0; i < n; i++)
+    {
+        if (array[i] <= average)
+        {
+            newArray[newIndex] = array[i];
+            newIndex++;
+        }
+    }
+
+
+    int evenSum = 0;
+    int oddSum = 0;
+    for (int i = 0; i < newIndex; i++)
+    {
+        if (i % 2 == 0)
+        {
+            evenSum += newArray[i];
+        }
+        else oddSum += newArray[i];
+    }
+
+    int result = evenSum * oddSum;
+
+    cout << result << endl;
+
+    return 0;
+}
