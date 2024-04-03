@@ -1,0 +1,42 @@
+#include <iostream>
+#include<string>
+using namespace std;
+
+
+bool isValid(const string& username)
+{
+    if (username.length() < 3 || username.length() > 16) return false;
+
+    for (auto symbol : username)
+    {
+        if (!isalnum(symbol) && symbol != '-' && symbol != '_') return false;
+    }
+
+    return true;
+}
+
+int main()
+{
+    const string separator = ", ";
+
+    string line;
+    getline(cin, line);
+
+    int cursor = 0;
+    while (cursor < line.length())
+    {
+        int separatorIndex = line.find(separator, cursor);
+
+        int end = separatorIndex;
+        if (separatorIndex == -1) end = line.length();
+
+        string username = line.substr(cursor, end - cursor);
+        if (isValid(username))
+        {
+            cout << username << endl;
+        }
+
+        cursor += username.length() + separator.length();
+        //cursor = end + separator.length();
+    }
+}
