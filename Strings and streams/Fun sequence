@@ -1,0 +1,48 @@
+#include <iostream>
+using namespace std;
+
+void readArray(int array[], const int& n)
+{
+    for (int i = 0; i < n; i++)
+    {
+        cin >> array[i];
+    }
+}
+
+int main()
+{
+    constexpr int MAX_N = 50;
+
+    int n;
+    cin >> n;
+
+    int sum = 0;
+    int array[MAX_N];
+
+    readArray(array, n);
+
+    for (int i = 0; i < n; i++)
+    {
+        sum += array[i];
+    }
+
+    int average = sum / n;
+    bool valid = false;
+
+    for (int i = 0; i < n; i++)
+    {
+        if (array[i] % 2 == 0 && array[i] < average)
+        {
+            cout << array[i] << ' ';
+            valid = true;
+        }
+    }
+    if (!valid)
+    {
+        cout << "No";
+    }
+       
+    cout << endl;
+
+    return 0;
+}
