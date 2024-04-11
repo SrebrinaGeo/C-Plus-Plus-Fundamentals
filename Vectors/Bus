@@ -1,0 +1,42 @@
+#include <iostream>
+#include <vector>
+#include<climits>
+using namespace std;
+
+int calculateTime(const int& militaryTime)
+{
+    int hours = militaryTime / 100, minutes = militaryTime % 100;
+    return hours * 60 + minutes;
+}
+
+
+int main()
+{
+    int n;
+    cin >> n;
+
+    vector<int> busArrivalTimes(n);
+    for (int& el : busArrivalTimes) cin >> el;
+
+    int trainDepartureTime;
+    cin >> trainDepartureTime;
+
+    int normalTrainDepTime = calculateTime(trainDepartureTime);
+
+    int minWaitTime = INT_MAX, ansIndex = -1;
+    for (int i = 0; i < n; i++)
+    {
+        int currentBusArrivalTime = calculateTime(busArrivalTimes[i]);
+        int diff = normalTrainDepTime - currentBusArrivalTime;
+
+        if (0 <= diff && diff < minWaitTime)
+        {
+            minWaitTime = diff;
+            ansIndex = i;
+        }
+    }
+
+    cout << ansIndex + 1 << endl;
+
+    return 0;
+}
