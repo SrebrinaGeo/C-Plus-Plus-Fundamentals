@@ -1,0 +1,43 @@
+#include <iostream>
+#include<string>
+#include<vector>
+using namespace std;
+
+bool isValid(const string& text)
+{
+	vector<char> brackets;
+	for (int i = 0; i < text.length(); i++)
+	{
+		if (text[i] == '{' || text[i] == '[' || text[i] == '(')
+		{
+			if (!brackets.empty() && brackets.back() < text[i]) return false;
+			brackets.push_back(text[i]);
+		}
+		else if (text[i] == '}')
+		{
+			if (brackets.empty() || brackets.back() != '{') return false;
+			brackets.pop_back();
+		}
+		else if (text[i] == ']')
+		{
+			if (brackets.empty() || brackets.back() != '[') return false;
+			brackets.pop_back();
+		}
+		else if (text[i] == ')')
+		{
+			if (brackets.empty() || brackets.back() != '(') return false;
+			brackets.pop_back();
+		}
+	}
+	return brackets.empty(); // brackets.size() == 0;
+}
+
+
+int main()
+{
+	string line;
+	getline(cin, line);
+	
+	if (isValid(line)) cout << "valid" << endl;
+	else cout << "invalid" << endl;
+}
