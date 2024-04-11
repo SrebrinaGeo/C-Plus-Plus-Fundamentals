@@ -1,0 +1,61 @@
+#include <iostream>
+#include<vector>
+#include<sstream>
+#include<string>
+#include <climits>
+using namespace std;
+
+vector<int> readNumbers()
+{
+    string line;
+    getline(cin, line);
+
+    istringstream iss(line);
+
+    vector<int> numbers;
+    int currentNumber;
+    while (iss >> currentNumber) numbers.push_back(currentNumber);
+
+    return numbers;
+}
+
+
+int main()
+{
+    vector<int> first = readNumbers();
+    vector<int> second = readNumbers();
+
+    ostringstream operationsLog;
+    vector<int> finalComposition;
+
+    while (!first.empty() || !second.empty())
+    {
+        int firstRailcar = INT_MAX, secondRailcar = INT_MAX;
+        if (!first.empty()) firstRailcar = first[first.size() - 1];
+        if (!second.empty()) secondRailcar = second[second.size() - 1];
+        
+        
+        if (firstRailcar < secondRailcar)
+        {
+            operationsLog << 'A';
+            finalComposition.push_back(firstRailcar);
+            first.erase(first.end() - 1);
+        }
+
+        else
+        {
+            operationsLog << 'B';
+            finalComposition.push_back(secondRailcar);
+            second.erase(second.end() - 1);
+        }
+    }
+
+    cout << operationsLog.str() << endl;
+    for (auto it = finalComposition.end(); it > finalComposition.begin(); it--)
+    {
+        cout << *(it - 1) << ' ';
+    }
+    cout << endl;
+
+    return 0;
+}
