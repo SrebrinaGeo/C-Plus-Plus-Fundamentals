@@ -1,44 +1,32 @@
 #include <iostream>
 using namespace std;
 
-void readArray(int array[], const int& n)
-{
-    for (int i = 0; i < n; i++)
-    {
-        cin >> array[i];
-    }
-}
-
 int main()
 {
-    constexpr int MAX_N = 100;
-
     int n;
     cin >> n;
 
     int sum = 0;
     int product = 1;
-    int array[MAX_N];
-
-    readArray(array, n);
+    int numbers[n];
+    int newArray[n];
 
     for (int i = 0; i < n; i++)
     {
-        sum += array[i];
+        cin >> numbers[i];
+        sum += numbers[i];
     }
 
-    int newArray[MAX_N];
-    int newIndex = 0;
     int average = sum / n;
+    int newIndex = 0;
+
     for (int i = 0; i < n; i++)
     {
-        if (array[i] <= average)
+        if (numbers[i] <= average)
         {
-            newArray[newIndex] = array[i];
-            newIndex++;
+            newArray[newIndex++] = numbers[i];
         }
     }
-
 
     int evenSum = 0;
     int oddSum = 0;
@@ -48,7 +36,10 @@ int main()
         {
             evenSum += newArray[i];
         }
-        else oddSum += newArray[i];
+        else
+        {
+            oddSum += newArray[i];
+        }
     }
 
     int result = evenSum * oddSum;
