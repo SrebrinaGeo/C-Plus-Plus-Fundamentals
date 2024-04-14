@@ -32,7 +32,6 @@ bool isValid(const string& text)
 	return brackets.empty(); // brackets.size() == 0;
 }
 
-
 int main()
 {
 	string line;
