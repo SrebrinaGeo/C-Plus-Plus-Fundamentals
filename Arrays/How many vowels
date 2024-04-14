@@ -1,0 +1,48 @@
+#include <iostream>
+#include<cctype>
+using namespace std;
+
+
+void readArray(char array[], const int& n)
+{
+    for (int i = 0; i < n; i++)
+    {
+        cin >> array[i];
+    }
+}
+
+int main()
+{
+    constexpr int MAX_N = 100;
+    char array[MAX_N];
+
+    int n;
+    cin >> n;
+
+    int vowelsCount = 0;
+    int consCount = 0;
+
+    readArray(array, n);
+
+    for (int i = 0; i < n; i++)
+    {
+        if (isalpha(array[i]))
+        {
+            char symbol = tolower(array[i]);
+            if (symbol == 'a' || symbol == 'e' || symbol == 'o' || symbol == 'u' || symbol == 'y' || symbol == 'i')
+            {
+                vowelsCount++;
+            }
+
+            else
+            {
+                consCount++;
+            }
+        }
+        else continue;
+    }
+
+    cout << vowelsCount << " " << consCount << endl;
+
+    return 0;
+}
