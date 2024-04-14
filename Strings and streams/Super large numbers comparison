@@ -1,0 +1,50 @@
+#include <iostream>
+#include <vector>
+#include <string>
+#include <sstream>
+using namespace std;
+
+vector<string> readNumbers()
+{
+    string line;
+    getline(cin, line);
+
+    istringstream iss(line);
+
+    vector<string> numbers;
+    string currentNumber;
+    while (iss >> currentNumber) numbers.push_back(currentNumber);
+
+    return numbers;
+}
+
+int main()
+{
+    vector<string> first = readNumbers();
+    vector<string> second = readNumbers();
+
+    string comparisonString;
+
+    size_t maxSize = max(first.size(), second.size());
+    for (size_t i = 0; i < maxSize; ++i) {
+        char comparison;
+        if (i < first.size() && i < second.size()) {
+            if (first[i] == second[i]) {
+                comparison = '=';
+            } else if (first[i] > second[i]) {
+                comparison = '<';
+            } else if (first[i] < second[i]) {
+                comparison = '>';
+            }
+        } else if (i < first.size()) {
+            comparison = '+';
+        } else {
+            comparison = '-';
+        }
+        comparisonString += comparison;
+    }
+
+    cout << comparisonString << endl;
+
+    return 0;
+}
