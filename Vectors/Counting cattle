@@ -1,0 +1,103 @@
+#include <iostream>
+#include<vector>
+#include<string>
+#include<sstream>
+#include<iomanip>
+#include<cctype>
+using namespace std;
+
+
+vector<string> readCattle()
+{
+    string line;
+    getline(cin, line);
+
+    istringstream iss(line);
+
+    vector<string> cattle;
+    string currentToken;
+    while (iss >> currentToken) cattle.push_back(currentToken);
+
+    return cattle;
+}
+
+
+int main()
+{
+    vector<string> cattle = readCattle();
+    
+    vector<string> cows;
+    vector<string> sheep;
+    vector<string> other;
+
+    int counterS = 0, counterC = 0, counterO = 0;
+    int totalSizeS = 0, totalSizeC = 0, totalSizeO = 0;
+
+    for (string token : cattle)
+    {
+        if (token[0] == 'S')
+        {
+            sheep.push_back(token);
+            totalSizeS += static_cast<int>(token[1]) - '0';
+            counterS++;
+        }
+
+        else if (token[0] == 'C')
+        {
+            cows.push_back(token);
+            totalSizeC += static_cast<int>(token[1]) - '0';
+            counterC++;
+        }
+
+        else
+        {
+            other.push_back(token);
+            totalSizeO += static_cast<int>(token[1]) - '0';
+            counterO++;
+        }
+    }
+
+    cout.setf(ios::fixed);
+    cout.precision(2);
+
+    double averageSizeC = (counterC == 0) ? 0 : static_cast<double>(totalSizeC) / counterC;
+    double averageSizeS = (counterS == 0) ? 0 : static_cast<double>(totalSizeS) / counterS;
+    double averageSizeO = (counterO == 0) ? 0 : static_cast<double>(totalSizeO) / counterO;
+
+    
+    if (cows.size() > 0)
+    {
+        cout << counterC << " cows: ";
+        for (const auto& cow : cows) {
+            cout << cow << " ";
+        }
+        cout << "with avg. size " << averageSizeC << endl;
+    }
+
+    else cout << "no cows!" << endl;
+
+    
+    if (sheep.size() > 0)
+    {
+        cout << counterS << " sheep: ";
+        for (const auto& sheep : sheep) {
+            cout << sheep << " ";
+        }
+        cout << "with avg. size " << averageSizeS << endl;
+    }
+    else cout << "no sheep!" << endl;
+
+
+    if (other.size() > 0)
+    {
+        cout << counterO << " others: ";
+        for (const auto& other : other) {
+            cout << other << " ";
+        }
+        cout << "with avg. size " << averageSizeO << endl;
+    }
+    else cout << "no others!" << endl;
+
+
+    return 0;
+}
