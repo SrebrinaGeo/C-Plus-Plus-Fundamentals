@@ -4,7 +4,6 @@
 #include <string>
 using namespace std;
 
-
 static void readVector(vector<int>& numbers)
 {
     string line;
@@ -51,7 +50,6 @@ static void printVector(vector<int>& myVector)
         cout << el << " ";
     }
 }
-
 
 
 int main()
