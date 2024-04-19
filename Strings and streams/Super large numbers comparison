@@ -25,23 +25,38 @@ int main()
 
     string comparisonString;
 
-    size_t maxSize = max(first.size(), second.size());
-    for (size_t i = 0; i < maxSize; ++i) {
-        char comparison;
-        if (i < first.size() && i < second.size()) {
-            if (first[i] == second[i]) {
-                comparison = '=';
-            } else if (first[i] > second[i]) {
-                comparison = '<';
-            } else if (first[i] < second[i]) {
-                comparison = '>';
+    size_t i = 0, j = 0;
+    while (i < first.size() && j < second.size())
+    {
+        if (first[i].size() == second[j].size())
+        {
+            if (first[i] == second[j])
+            {
+                comparisonString += '=';
             }
-        } else if (i < first.size()) {
-            comparison = '+';
-        } else {
-            comparison = '-';
+            else if (first[i] > second[j])
+            {
+                comparisonString += '<';
+            }
+            else
+            {
+                comparisonString += '>';
+            }
         }
-        comparisonString += comparison;
+        else comparisonString += (first[i].size() > second[j].size()) ? '<' : '>';
+        i++;
+        j++;
+    }
+
+    while (i < first.size())
+    {
+        comparisonString += '+';
+        i++;
+    }
+    while (j < second.size())
+    {
+        comparisonString += '-';
+        j++;
     }
 
     cout << comparisonString << endl;
