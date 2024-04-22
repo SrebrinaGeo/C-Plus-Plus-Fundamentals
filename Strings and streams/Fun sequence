@@ -1,4 +1,5 @@
 #include <iostream>
+#include <algorithm>
 using namespace std;
 
 void readArray(int array[], const int& n)
@@ -11,16 +12,20 @@ void readArray(int array[], const int& n)
 
 int main()
 {
-    constexpr int MAX_N = 50;
-
     int n;
     cin >> n;
 
-    int sum = 0;
+    if (n <= 0) {
+        cout << "No" << endl;
+        return 0;
+    }
+
+    constexpr int MAX_N = 50;
     int array[MAX_N];
 
     readArray(array, n);
 
+    int sum = 0;
     for (int i = 0; i < n; i++)
     {
         sum += array[i];
@@ -28,20 +33,31 @@ int main()
 
     int average = sum / n;
     bool valid = false;
+    int evenCount = 0;
 
     for (int i = 0; i < n; i++)
     {
         if (array[i] % 2 == 0 && array[i] < average)
         {
-            cout << array[i] << ' ';
+            swap(array[evenCount], array[i]);
+            evenCount++;
             valid = true;
         }
     }
+
     if (!valid)
     {
         cout << "No";
+        return 0;
     }
-       
+
+    sort(array, array + evenCount, greater<int>());
+
+    for (int i = 0; i < evenCount; i++)
+    {
+        cout << array[i] << ' ';
+    }
+
     cout << endl;
 
     return 0;
