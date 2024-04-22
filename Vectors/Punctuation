@@ -1,0 +1,61 @@
+#include <iostream>
+#include <vector>
+#include <string>
+#include <sstream>
+#include <cctype>
+using namespace std;
+
+vector<string> splitSentences(const string& input, char delimiter)
+{
+    vector<string> splitSentences;
+    istringstream iss(input);
+    string token;
+
+    while (getline(iss, token, delimiter))
+    {
+        splitSentences.push_back(token);
+    }
+
+    return splitSentences;
+}
+
+int main()
+{
+    string input;
+    getline(cin, input);
+    char delimiter = '|';
+
+    vector<string> splitLine = splitSentences(input, delimiter);
+
+    vector<int> symbolsCounter(splitLine.size(), 0);
+    vector<int> sentenceCounter(101, 0);
+
+    for (size_t i = 0; i < splitLine.size(); i++)
+    {
+        for (char c : splitLine[i])
+        {
+            if (ispunct(c))
+            {
+                symbolsCounter[i]++;
+            }
+        }
+        if (symbolsCounter[i] < 101)
+        {
+            sentenceCounter[symbolsCounter[i]]++;
+        }
+        else
+        {
+            sentenceCounter[100]++;
+        }
+    }
+
+    for (size_t i = 0; i < sentenceCounter.size(); i++)
+    {
+        if (sentenceCounter[i] > 0)
+        {
+            cout << i << " symbol sentences: " << sentenceCounter[i] << endl;
+        }
+    }
+
+    return 0;
+}
