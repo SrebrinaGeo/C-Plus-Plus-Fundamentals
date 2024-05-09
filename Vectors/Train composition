@@ -1,0 +1,78 @@
+#include <iostream>
+#include <vector>
+#include <string>
+#include <sstream>
+#include <algorithm>
+using namespace std;
+
+vector<string> readTrain()
+{
+    vector<string> train;
+    string currentWagon;
+
+    while (getline(cin, currentWagon) && currentWagon != "end")
+    {
+        if (currentWagon == "empty")
+        {
+            train.push_back(" ");
+        }
+        else
+        {
+            train.push_back(currentWagon);
+        }
+    }
+
+    return train;
+}
+
+void printComposition(const vector<string>& composition)
+{
+    cout << "|";
+    for (const string& wagon : composition)
+    {
+        cout << wagon << "|";
+    }
+    cout << endl;
+}
+
+int main()
+{
+    vector<string> composition = readTrain();
+
+    string command;
+
+    while (getline(cin, command) && command != "E")
+    {
+        if (command[0] == 'P')
+        {
+            printComposition(composition);
+        }
+        else if (command[0] == 'M' && command.size() >= 5)
+        {
+            int oldPos = command[2] - '1';
+            int newPos = command[4] - '1';
+
+            if (oldPos >= 0 && oldPos < composition.size() &&
+                newPos >= 0 && newPos < composition.size() &&
+                oldPos != newPos)
+            {
+                string temp = composition[oldPos];
+                composition.erase(composition.begin() + oldPos);
+                composition.insert(composition.begin() + newPos, temp);
+                printComposition(composition);
+            }
+        }
+        else if (command[0] == 'L' && command.size() >= 3)
+        {
+            int pos = command[2] - '1';
+
+            if (pos >= 0 && pos < composition.size())
+            {
+                composition.erase(composition.begin() + pos);
+                printComposition(composition);
+            }
+        }
+    }
+
+    return 0;
+}
