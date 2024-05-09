@@ -1,0 +1,31 @@
+#include <iostream>
+#include <cmath>
+#include <string>
+using namespace std;
+
+int main()
+{
+    int n;
+    cin >> n;
+
+    string symbols(2 * n, '*');
+    string spaces(n, ' ');
+
+    cout << symbols << spaces << symbols << endl;
+    for (int i = 1; i <= n - 2; i++)
+    {
+        string midSymbols(2 * n - 2, '/');
+        if (i == (n - 1) / 2)
+        {
+            string stick(n, '|');
+            cout << '*' << midSymbols << '*' << stick << '*' << midSymbols << '*' << endl;
+        }
+        else
+        {
+            cout << '*' << midSymbols << '*' << spaces << '*' << midSymbols << '*' << endl;
+        }
+    }
+    cout << symbols << spaces << symbols << endl;
+
+    return 0;
+}
